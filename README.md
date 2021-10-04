@@ -391,7 +391,8 @@ export function Content() {
 ```
 
 And adapt your `npm start` script (replace `groupeXX` by your group number):
-```json
+```js
+// insisde frontend/package.json
 {
   // ...
   "scripts": {
