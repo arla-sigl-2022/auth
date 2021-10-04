@@ -367,7 +367,7 @@ You are now passing an Authorization header with a JWT token, that you got from 
 
 > Note: You may have noticed `async` and `await` keywords. It's syntaxic sugar to replace many chain callbacks using the classic promise's `then` and `catch` keyword.
 
-# Step 4: Adapt frontend config to manage both localhost and production domains
+# Step 5: Adapt frontend config to manage both localhost and production domains
 
 **Objective**: Use localhost:3030 when running frontend for development and https://api.groupeXX.arla-sigl.fr when building for production.
 
@@ -404,3 +404,5 @@ And adapt your `npm start` script (replace `groupeXX` by your group number):
 You should be all set:
 - When running `npm run build` inside your docker container, you are setting fetch to call the web API on `https://api.groupeXX.arla-sigl.fr`
 - When running `npm start` (or `npm run start`) from your terminal, you are setting fetch to call the web API on `http://localhost:3030`
+
+Just commit/push your changes and your version with login and secured API should be live, congrats!
