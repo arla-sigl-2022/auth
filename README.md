@@ -376,5 +376,31 @@ Create-react-app, the tool you've used to create your project, offers [a way to 
 From your `frontend/src/Content.js` file where you call `fetch`:
 
 ```js
+// inside frontend/src/Content.js
 
+export function Content() {
+  // ...
+  React.useEffect(() => {
+    async function getResources() {
+      // ...
+      const apiResponse = await fetch(
+        `${process.env.REACT_APP_API_HOST}/v1/resource?page=1&limit=10`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      // ...
 ```
+
+And adapt your `npm start` script (replace `groupeXX` by your group number):
+```json
+{
+  // ...
+  "scripts": {
+    "start": "REACT_APP_API_HOST=http://localhost:3030 node scripts/start.js",
+    "build": "REACT_APP_API_HOST=https://api.groupeXX.arla-sigl.fr node scripts/build.js",
+    // ...
+}
+```
+
+You should be all set:
+- When running `npm run build` inside your docker container, you are setting fetch to call the web API on `https://api.groupeXX.arla-sigl.fr`
+- When running `npm start` (or `npm run start`) from your terminal, you are setting fetch to call the web API on `http://localhost:3030`
